@@ -1,0 +1,41 @@
+body {
+  font-family: "Segoe UI", "Open Sans", sans-serif, serif; }
+
+.app-bar {
+  display: block;
+  width: 100%;
+  position: relative;
+  background-color: #1d1d1d;
+  height: 3.125rem; }
+  .app-bar .fixed-top {
+    top: 0;
+    position: fixed;
+    bottom: auto; }
+  .app-bar .app-bar-element {
+    line-height: 3.125rem;
+    padding: 0 0.625rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: inherit;
+    display: block;
+    float: left;
+    position: relative;
+    vertical-align: middle;
+    height: 3.125rem; }
+  .app-bar .branding {
+    padding-left: 1rem;
+    padding-right: 1rem; }
+  .app-bar .app-bar-divider {
+    display: block;
+    float: left;
+    line-height: 3.125rem;
+    height: 3.125rem;
+    width: 1px;
+    background-color: #ffffff;
+    padding: 0; }
+
+.app-bar .app-bar-element:hover,
+.app-bar .app-bar-element:active {
+  background-color: #282F35; }
+
+/*# sourceMappingURL=style.css.map */
