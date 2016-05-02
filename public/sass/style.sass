@@ -1,0 +1,44 @@
+$font:  "Segoe UI", "Open Sans", sans-serif, serif
+$dark-color: #1d1d1d
+$white-color: #ffffff
+
+
+body
+    font-family: $font
+    
+.app-bar
+    display: block
+    width: 100%
+    position: relative
+    background-color: $dark-color
+    height: 3.125rem
+    
+    .fixed-top
+        top: 0
+        position: fixed
+        bottom: auto
+    
+    .app-bar-element
+        line-height: 3.125rem
+        padding: 0 .625rem
+        font-size: 1rem
+        cursor: pointer
+        color: inherit
+        display: block
+        float: left
+        position: relative
+        vertical-align: middle
+        height: 3.125rem
+    
+    .branding
+        padding-left: 1rem
+        padding-right: 1rem
+    
+    .app-bar-divider
+        display: block
+        float: left   
+        line-height: 3.125rem
+        height: 3.125rem
+        width: 1px
+        background-color: $white-color
+        padding: 0
