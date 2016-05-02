@@ -5,5 +5,5 @@
     expressJS, MongoDB, Mongoose, SASS, ...), obteniendo como salida el árbol de nálisis sintáctico del programa de entrada.
 
 ##Recursos:
-    * [PEG.js](http://pegjs.majda.cz/)
-    * [PL/0 Grammar. Wikipedia](http://en.wikipedia.org/wiki/Recursive_descent_parser)
+    *[PEG.js](http://pegjs.majda.cz/)
+    *[PL/0 Grammar. Wikipedia](http://en.wikipedia.org/wiki/Recursive_descent_parser)
