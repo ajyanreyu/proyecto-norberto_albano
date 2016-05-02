@@ -1,6 +1,7 @@
 $font:  "Segoe UI", "Open Sans", sans-serif, serif
 $dark-color: #1d1d1d
 $white-color: #ffffff
+$parse-color:  #60a917
 
 
 body
@@ -12,6 +13,7 @@ body
     position: relative
     background-color: $dark-color
     height: 3.125rem
+    color: #ffffff
     
     .fixed-top
         top: 0
@@ -42,7 +44,139 @@ body
         width: 1px
         background-color: $white-color
         padding: 0
+        
+
 
 .app-bar .app-bar-element:hover,
 .app-bar .app-bar-element:active 
     background-color: #282F35
+
+
+.app-bar .app-bar-menu > li,
+.app-bar .app-bar-menu > li > a 
+    line-height: 3.125rem
+    padding: 0 .625rem
+    font-size: 1rem
+    cursor: pointer
+    color: inherit
+    display: block
+    float: left
+    position: relative
+    vertical-align: middle   
+    height: 3.125rem
+
+.app-bar .app-bar-menu > li:hover,
+.app-bar .app-bar-menu > li > a:hover,
+.app-bar .app-bar-menu > li:active,
+.app-bar .app-bar-menu > li > a:active 
+    background-color: #005696
+
+.app-bar .app-bar-menu > li.branding,
+.app-bar .app-bar-menu > li > a.branding 
+    padding-left: 1rem
+    padding-right: 1rem
+
+.app-bar .app-bar-menu > li:before,
+.app-bar .app-bar-menu > li > a:before,
+.app-bar .app-bar-menu > li:after,
+.app-bar .app-bar-menu > li > a:after 
+    display: table
+    content: ""
+
+.app-bar .app-bar-menu > li:after,
+.app-bar .app-bar-menu > li > a:after 
+    clear: both
+
+.bg-white 
+    background-color: $white-color !important
+
+
+.tile-area-scheme-dark 
+    background-color: #1d1d1d
+
+.tile-area-scheme-dark [class*=tile] 
+    outline-color: #373737
+
+.size200
+    width: 200px
+
+.full-size
+    width: 100% !important
+
+.sidebar 
+    background-color: $dark-color
+    color: #ffffff
+    position: relative
+    width: 100%
+    padding: 0
+    margin: 0
+    list-style: none inside none
+
+.sidebar li 
+    display: block
+    background-color: inherit
+    color: inherit
+    position: relative
+    height: 52px
+    
+.sidebar li a 
+    display: block
+    background-color: inherit
+    color: inherit
+    padding: .625rem 1rem .625rem 3.75rem
+    position: relative
+    width: 100%
+    height: 100%
+    line-height: .875rem
+
+.sidebar li a .title,
+.sidebar li a .counter 
+    display: block
+    margin: 0
+    white-space: nowrap
+
+.sidebar li a .title 
+    font-size: .6875rem
+    font-weight: bold
+    text-transform: uppercase
+
+.sidebar li a .counter 
+    font-size: .7rem
+    font-weight: normal
+
+.sidebar li:hover 
+    background-color: #7cc1de
+
+.sidebar li.active 
+    background-color: #ffffff
+    color: #323232
+
+.margin-left
+    margin-left: 50px
+
+.place-right
+    float: right !important
+    
+.button
+    padding: 0 1rem
+    height: 2.125rem
+    text-align: center
+    vertical-align: middle
+    background-color: $white-color
+    border: 1px #d9d9d9 solid
+    color: $white-color
+    cursor: pointer
+    display: inline-block
+    outline: none
+    font-size: .875rem
+    line-height: 100%
+    margin: .15625rem 0
+    position: relative
+    background: $parse-color
+    border-color: $parse-color
+
+.button-shadow
+    box-shadow: 0 0 25px 0 rgba(0, 128, 0, 0.7)
+
+.text-shadow
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4)
