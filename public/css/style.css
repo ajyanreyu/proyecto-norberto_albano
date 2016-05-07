@@ -157,12 +157,21 @@ body {
   font-size: 0.875rem;
   line-height: 100%;
   margin: 0.15625rem 0;
-  position: relative;
+  position: relative; }
+
+.parse {
   background: #60a917;
   border-color: #60a917; }
 
-.button-shadow {
+.save {
+  background: #2086bf;
+  border-color: #2086bf; }
+
+.button-shadow-parse {
   box-shadow: 0 0 25px 0 rgba(0, 128, 0, 0.7); }
+
+.button-shadow-save {
+  box-shadow: 0 0 25px 0 rgba(89, 205, 226, 0.7); }
 
 .text-shadow {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); }
