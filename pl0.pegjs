@@ -59,13 +59,18 @@ assign = i:ID ASSIGN e:cond
             { return {type: '=', left: i, right: e}; }
        / cond
 
-cond = l:exp op:COMP r:exp { return { type: op, left: l, right: r} }
+cond = l:call op:COMP r:exp { return { type: op, left: l, right: r} } 
+     /l:exp op:COMP r:exp { return { type: op, left: l, right: r} }
      / exp
+     
+call = i:ID p:param { return { type: 'call', id: i,  inparam: p } }
+
 
 exp    = t:term   r:(ADD term)*   { return tree(t,r); }
 term   = f:factor r:(MUL factor)* { return tree(f,r); }
 
-factor = NUMBER
+factor = call
+       / NUMBER
        / ID
        / LEFTPAR t:assign RIGHTPAR   { return t; }
 
