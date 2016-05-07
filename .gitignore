@@ -1,3 +1,5 @@
 node_module/
 .sass-cahe/
 style.css.map
+data/
+mongod
