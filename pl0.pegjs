@@ -53,6 +53,13 @@ st     = CL s1:st? r:(SC st)* SC* CR {
                 st:st
               }
             }
+        / RETURN f:cond SC
+          {
+            return {
+              type: 'RETURN',
+              children: t.concat(r.map( ([_, st]) => st ))
+            }
+          }
        / assign
 
 assign = i:ID ASSIGN e:cond            
@@ -64,6 +71,9 @@ cond = l:call op:COMP r:exp { return { type: op, left: l, right: r} }
      / exp
      
 call = i:ID p:param { return { type: 'call', id: i,  inparam: p } }
+
+param = l:LEFTPAR  r:RIGHTPAR {return 'void';}
+      / l:LEFTPAR v:(exp)+ r:RIGHTPAR {return v;}
 
 
 exp    = t:term   r:(ADD term)*   { return tree(t,r); }
