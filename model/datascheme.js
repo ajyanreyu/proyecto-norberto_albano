@@ -6,15 +6,15 @@
     mongoose.connect('mongodb://localhost/csv');
     
     const schema = mongoose.Schema;
-    const fileSavingSchema = mongoose.Schema({
+    const programFile = mongoose.Schema({
         "name": String,
         "meta": String
     
     });
     
-    const CSV = mongoose.model('CSV', fileSavingSchema);
+    const FILE = mongoose.model('FILE', programFile);
     
     
-    module.exports = CSV;
+    module.exports = FILE;
 
 });
