@@ -69,6 +69,15 @@ st     = CL s1:st? r:(SC st)* SC* CR {
                     children: t.concat(r.map( ([_, r]) => r ))
                 };
             }
+        / CONST c:assign? r:(CM assign)* SC
+            {
+                let t = [];
+                if (c) t.push(c);
+                return {
+                    type: 'CONST', // Chrome supports destructuring
+                    children: t.concat(r.map( ([_, r]) => r ))
+                };
+            }
        / assign
 
 assign = i:ID ASSIGN e:cond            
@@ -110,6 +119,9 @@ IF       = _ "if" _
 THEN     = _ "then" _
 ELSE     = _ "else" _
 WHILE    = _ "while" _
+RETURN   = _ "return" _
+VAR      = _ "var"_
+CONST    = _ "const" _
 
 ID       = _ id:$([a-zA-Z_][a-zA-Z_0-9]*) _ 
             { 
