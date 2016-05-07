@@ -2,7 +2,7 @@ $font:  "Segoe UI", "Open Sans", sans-serif, serif
 $dark-color: #1d1d1d
 $white-color: #ffffff
 $parse-color:  #60a917
-
+$save-color: #59cde2
 
 body
     font-family: $font
@@ -173,8 +173,14 @@ body
     line-height: 100%
     margin: .15625rem 0
     position: relative
-    background: $parse-color
-    border-color: $parse-color
+    
+    .parse
+        background: $parse-color
+        border-color: $parse-color
+    .save
+        background: $save-color
+        border-color: $save-color
+    
 
 .button-shadow
     box-shadow: 0 0 25px 0 rgba(0, 128, 0, 0.7)
