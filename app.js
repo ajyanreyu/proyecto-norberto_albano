@@ -29,3 +29,16 @@ app.listen(app.get('port'), () => {
 
 const Entrada = require('./model/dataschema.js');
 
+app.get('/mongo/', function(req, res) {
+    Entrada.find({}, function(err, docs) {
+        if (err)
+            return err;
+        if (docs.length >= 4) {
+            Entrada.find({ name: docs[3].name }).remove().exec();
+        }
+    });
+    let input = new Entrada({
+        "name": req.query.name,
+        "content": req.query.content
+    });
+});
