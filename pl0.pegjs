@@ -54,12 +54,21 @@ st     = CL s1:st? r:(SC st)* SC* CR {
               }
             }
         / RETURN f:cond SC
-          {
-            return {
-              type: 'RETURN',
-              children: t.concat(r.map( ([_, st]) => st ))
+            {
+                return {
+                type: 'RETURN',
+                children: t.concat(r.map( ([_, st]) => st ))
             }
           }
+        / VAR c:assign? r:(CM assign)* SC
+            {
+                let t = [];
+                if (c) t.push(c);
+                return {
+                    type: 'VAR', // Chrome supports destructuring
+                    children: t.concat(r.map( ([_, r]) => r ))
+                };
+            }
        / assign
 
 assign = i:ID ASSIGN e:cond            
