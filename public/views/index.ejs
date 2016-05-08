@@ -25,20 +25,20 @@
             <table>
                 <tr>
                     <td>
-                        <textarea class = "drop_zone margin-left" autofocus="" cols = "100" rows = "5" id="original"></textarea>
+                        <textarea class = "drop_zone margin-left" autofocus="" cols = "100" rows = "5" id="input"></textarea>
                     </td>
                 </tr>
                 <tr>
                      <td>
                         <input id="saveAs" type="text" placeholder="Save as" class="drop_zone margin-left" patter="\w+"/>
                         <button class="button save button-shadow-parse text-shadow">Save As</button>
-                        <button class="button parse place-right button-shadow-parse text-shadow">Parser</button>
+                        <button class="button parse place-right button-shadow-parse text-shadow" id="parse">Parser</button>
                     </td>
                     
                     
                 </tr>
                 <tr>
-                     <div class="output" id="finaltable"></div>
+                     <div class="output" id="output"></div>
                 </tr>
             </table>
              
