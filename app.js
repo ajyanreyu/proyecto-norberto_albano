@@ -29,5 +29,5 @@ app.listen(app.get('port'), () => {
 
 var controller = require('./model/datascheme.js');
 
-app.get('/getFile', controller.getFile);
-console.log(controller.getFile());
+//app.get('/getFile', controller.getFile);
+//console.log(controller.getFile());

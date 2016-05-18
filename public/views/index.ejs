@@ -1,48 +1,37 @@
 <div class="app-bar fixed-top">
     
-    <a class="app-bar-element branding">PL/0</a>
+    <a class="app-bar-element title">PL/0</a>
     <span class"app-bar-divider bg-white"></span>
-    <ul class="app-bar-menu title-area-scheme-dark">
+    <ul class="app-bar-link">
         <li><href="https://campusvirtual.ull.es/1516/course/view.php?id=178">Procesadores de Lenguaje</href></li>
         <li><href="https://en.wikipedia.org/wiki/Recursive_descent_parser">Gramatica PL/0</href></li>
         <li><href="https://github.com/ULL-ESIT-GRADOII-PL/proyecto-norberto_albano">Repositorio Org.</href></li>
         <li><href="http://pegjs.org/">PEGjs</href></li>
     </ul>
 </div>
-<table>
-    <tr>
-        <td class="tile-area-scheme-dark size200">
-             <div class="title-area-scheme-dark">
-                <ul class="sidebar title-area-scheme-dark">
-                    <!- crear de forma dinamica los li con los nombres de los ficheros -->
-                    <li>Prueba</li>
-                    <li>Prueba 1</li>
-                    
-                </ul>
+<div class="page-content">
+    <div class="flex-container">
+        <div class="row">
+            <div class="cell" style="background-color: #71b1d1; height: 100%">
+                <ul class="sidebar">
+                    <li><span class="title">Fichero 1</span></li>
+                    <li><span class="title">Fichero 2</span></li>
+                </ul>          
+           </div>
+       
+       
+            <div class="cell auto-size padding-20">
+                 <textarea class = "drop_zone margin-left" autofocus="" cols = "100" rows = "5" id="input"></textarea>
+                 <div>
+                    <input id="saveAs" type="text" placeholder="Save as" class="drop_zone margin-left" patter="\w+"/>
+                    <button class="button save ">Save As</button>
+                    <button class="button parse place-right" id="parse">Parser</button>
+                 </div>
+                 <div class="output padding-20" id="output"></div>
             </div>
-        </td>
-        <td>
-            <table>
-                <tr>
-                    <td>
-                        <textarea class = "drop_zone margin-left" autofocus="" cols = "100" rows = "5" id="input"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                     <td>
-                        <input id="saveAs" type="text" placeholder="Save as" class="drop_zone margin-left" patter="\w+"/>
-                        <button class="button save button-shadow-parse text-shadow">Save As</button>
-                        <button class="button parse place-right button-shadow-parse text-shadow" id="parse">Parser</button>
-                    </td>
-                    
-                    
-                </tr>
-                <tr>
-                     <div class="output" id="output"></div>
-                </tr>
-            </table>
-             
-        </td>
-    </tr>
-   
-</table>
+            
+        </div>
+        
+        
+    </div>
+</div>

@@ -20,10 +20,53 @@
   }
 }
 
+program = b:block { b.name = {type: 'ID', value: "$main"}; b.params = []; return b}
+
+block = cD:constantDeclaration? vD:variableDeclaration? fD:functionDeclaration? st:st
+            {
+                return{
+                    type: 'BLOCK',
+                    constDeclaration: cD? = [cD] : [],
+                    varDeclaration: vD? = [vD] : [],
+                    functDeclaration: fD? = [fD] : [],
+                    main: st
+                }
+                
+            }
+
+constantDeclaration = CONST !COMA c:assign? r:(CM assign)* SC
+            {
+              let t = [];
+              if (c) t.push(c);
+              return {
+                type: 'CONST', // Chrome supports destructuring
+                children: t.concat(r.map( ([_, r]) => r ))
+              };
+            }
+
+variableDeclaration = VAR !COMMA c:assign? r:(CM assign)* SC
+          {
+            let t = [];
+            if (c) t.push(c);
+            return {
+              type: 'VAR', // Chrome supports destructuring
+              children: t.concat(r.map( ([_, r]) => r ))
+            };
+          }
+
+functionDeclaration = FUNCTION id:ID LEFTPAR a:ID? p1:(COMMA ID)* RIGHTPAR b:block SC 
+            {
+                let params = p1? [p1] : [];
+                params: params.concat(r.map([_, p] => p));
+              return {
+                type: 'FUNCTION',
+                name: id,
+                inparam: params,
+                st:st
+              }
+            }
+
 st     = CL s1:st? r:(SC st)* SC* CR {
-               /*console.log(s1);
-               console.log(r);
-               console.log(location()) /* atributos start y end */
                let t = [];
                if (s1) t.push(s1);
                return {
@@ -56,15 +99,7 @@ st     = CL s1:st? r:(SC st)* SC* CR {
                 st:st
               }
             }
-        /FUNCTION id:ID p:param CL st:st CR
-            {
-              return {
-                type: 'FUNCTION',
-                name: id,
-                inparam: p,
-                st:st
-              }
-            }
+        
         /RETURN f:cond SC
           {
             return {
@@ -72,24 +107,6 @@ st     = CL s1:st? r:(SC st)* SC* CR {
               children: t.concat(r.map( ([_, st]) => st ))
             }
           }
-        /VAR c:assign? r:(CM assign)* SC
-          {
-            let t = [];
-            if (c) t.push(c);
-            return {
-              type: 'VAR', // Chrome supports destructuring
-              children: t.concat(r.map( ([_, r]) => r ))
-            };
-          }
-          /CONST c:assign? r:(CM assign)* SC
-            {
-              let t = [];
-              if (c) t.push(c);
-              return {
-                type: 'CONST', // Chrome supports destructuring
-                children: t.concat(r.map( ([_, r]) => r ))
-              };
-            }
        /assign
 
 assign = i:ID ASSIGN c:call
@@ -103,10 +120,17 @@ cond = l:call op:COMP r:exp { return { type: op, left: l, right: r} }
     / l:exp op:COMP r:exp { return { type: op, left: l, right: r} }
     /exp
 
-call = i:ID p:param { return { type: 'call', id: i,  inparam: p } }
-
-param = l:LEFTPAR  r:RIGHTPAR {return 'void';}
-      / l:LEFTPAR v:(exp)+ r:RIGHTPAR {return v;}
+call = id:ID LEFTPAR a:assign? r:(COMMA assign)* RIGHTPAR 
+        { 
+            let c = a? [a] : [];
+            c = c.concat(r.map([_, t] => t));
+            return { 
+                type: 'CALL', 
+                name: id,
+                parameter: c 
+                
+            }
+        }
 
 
 exp   = t:term   r:(ADD term)*   { return tree(t,r); }
