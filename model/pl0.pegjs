@@ -36,14 +36,10 @@ block = cD:constantDeclaration? vD:variableDeclaration? fD:functionDeclaration* 
                 
             }
 
-constantDeclaration = CONST !COMA c:assign? r:(CM assign)* SC
+constantDeclaration = CONST id:ID ASSIGN n:NUMBER rest:(COMMA ID ASSIGN NUMBER)* SC
             {
-              let t = [];
-              if (c) t.push(c);
-              return {
-                type: 'CONST', // Chrome supports destructuring
-                children: t.concat(r.map( ([_, r]) => r ))
-              };
+              let r = rest.map( ([_, id, __, nu]) => [id.value, nu.value] );
+              return [[id.value, n.value]].concat(r) 
             }
 
 variableDeclaration = VAR !COMMA c:assign? r:(CM assign)* SC
