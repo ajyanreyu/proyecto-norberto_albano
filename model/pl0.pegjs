@@ -20,15 +20,17 @@
   }
 }
 
-program = b:block { b.name = {type: 'ID', value: "$main"}; b.params = []; return b}
+program = b:block { b.name = {type: 'ID', value: "$main"}; b.params = []; return b;}
 
-block = cD:constantDeclaration? vD:variableDeclaration? fD:functionDeclaration? st:st
+block = cD:constantDeclaration? vD:variableDeclaration? fD:functionDeclaration* st:st
             {
+                let constants =  cD? = [cD] : [];
+                let variables = vD? = [vD] : [];
                 return{
                     type: 'BLOCK',
-                    constDeclaration: cD? = [cD] : [],
-                    varDeclaration: vD? = [vD] : [],
-                    functDeclaration: fD? = [fD] : [],
+                    constants: constants,
+                    variables: variables,
+                    functions: fD,
                     main: st
                 }
                 
