@@ -42,14 +42,10 @@ constantDeclaration = CONST id:ID ASSIGN n:NUMBER rest:(COMMA ID ASSIGN NUMBER)*
               return [[id.value, n.value]].concat(r) 
             }
 
-variableDeclaration = VAR !COMMA c:assign? r:(CM assign)* SC
+variableDeclaration = VAR id:ID rest:(COMMA ID)* SC
           {
-            let t = [];
-            if (c) t.push(c);
-            return {
-              type: 'VAR', // Chrome supports destructuring
-              children: t.concat(r.map( ([_, r]) => r ))
-            };
+            let r = rest.map( ([_, id]) => id.value );
+            return [id.value].concat(r) 
           }
 
 functionDeclaration = FUNCTION id:ID LEFTPAR a:ID? p1:(COMMA ID)* RIGHTPAR b:block SC 
