@@ -25,9 +25,9 @@ const dump = (fileName) => {
 };
 
 /* Volcar la tabla con el resultado en el HTML */
-const resultado = (data) => {
-        $("#salida").html(JSON.stringify(data.tree, null, 2));
-    };
+//const resultado = (data) => {
+       // $("#salida").html(JSON.stringify(data.tree, null, 2));
+   // };
 
 //File
 const handleFileSelect = (evt) => {
@@ -103,13 +103,7 @@ $(document).ready(() => {
           });
         });
 
-   /* botones para rellenar el textarea 
-   $('button.example').each( (_,y) => {
-     $(y).click( () => { dump(`examples/${$(y).text()}.txt`); });
-   });*/
 
-    // Setup the drag and drop listeners.
-    //var dropZone = document.getElementsByClassName('drop_zone')[0];
     let dropZone = $('.drop_zone')[0];
     dropZone.addEventListener('dragover', handleDragOver, false);
     dropZone.addEventListener('drop', handleDragFileSelect, false);
