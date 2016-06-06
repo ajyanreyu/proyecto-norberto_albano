@@ -3,6 +3,7 @@
  * Used in ULL PL Grado de Informática classes
  */
 
+
 {
   var tree = function(f, r) {
     if (r.length > 0) {
@@ -38,26 +39,26 @@ block = cD:constantDeclaration? vD:variableDeclaration? fD:functionDeclaration* 
 
 constantDeclaration = CONST id:ID ASSIGN n:NUMBER rest:(COMMA ID ASSIGN NUMBER)* SC
             {
-              let r = rest.map( ([_, id, __, nu]) => [id.value, nu.value] );
-              return [[id.value, n.value]].concat(r) 
+              let r = rest.map( ([_, id, __, nu]) => new Constants(id.value, nu.value, location()) );
+              return [new Constants(id.value, n.value, location())].concat(r) 
             }
 
 variableDeclaration = VAR id:ID rest:(COMMA ID)* SC
           {
-            let r = rest.map( ([_, id]) => id.value );
-            return [id.value].concat(r) 
+            let r = rest.map( ([_, id]) => new Variables(id.value, location()) );
+             return [new Variables(id.value, location())].concat(r) 
           }
 
 functionDeclaration = FUNCTION id:ID LEFTPAR a:ID? p1:(COMMA ID)* RIGHTPAR b:block SC 
             {
                 let params = p1? [p1] : [];
                 params: params.concat(r.map([_, p] => p));
-              return {
+              return Object.assign(new Functions(id, params, location()), b); /*{
                 type: 'FUNCTION',
                 name: id,
                 inparam: params,
                 st:st
-              }
+              } */  
             }
 
 st     = CL s1:st? r:(SC st)* SC* CR {
